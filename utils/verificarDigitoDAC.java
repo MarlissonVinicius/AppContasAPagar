@@ -35,9 +35,13 @@ public class verificarDigitoDAC {
             acum+=valor; 
             
         }
-        
-        int dacBoxe = 10 - (acum%10);
-        
+        int resto = acum%10;
+
+        if (resto == 0) {
+            return resto;
+        }
+
+        int dacBoxe = 10 - resto;
         return dacBoxe;
     }
 

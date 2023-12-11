@@ -37,6 +37,14 @@ public class menus {
         }
     }
 
+    private static double retirarValor(String boxesUnidos){
+        
+        String stringValor = boxesUnidos.substring(4,11) + boxesUnidos.substring(12, 16);
+        double doubleValor = Double.parseDouble(stringValor)/100;
+        
+        return doubleValor;
+    }
+
     public static void entradaInvalida() {
         limparTerminal();
         exibirBarras();
@@ -57,9 +65,11 @@ public class menus {
         System.out.print(" Digite a opção: ");
     }
 
-    public static void ReceberDigitos(){
+    public static void pagamentoCodigoBarras(){
         Scanner scan = new Scanner(System.in);
         int dacCorreto = 0;
+        double valorPago = 0;
+        String boxe1E2 = "";
         limparTerminal();
         exibirBarras();
 
@@ -67,9 +77,16 @@ public class menus {
             System.out.print("Digite o BOXE-"+i+": ");
             String digitos = scan.nextLine();
             String retorno = verificarDigitoDAC.boxe(digitos);
-
+            
+            
             if( retorno == "valido"){
                 dacCorreto+=1;
+                if(i == 1 | i == 2){
+                    boxe1E2 += digitos;
+                }else if(i ==3){
+                   
+                    valorPago = retirarValor(boxe1E2);
+                }
             }else{
 
                 switch (retorno){
@@ -89,8 +106,30 @@ public class menus {
             }
         }
         if(dacCorreto == 4){
-            System.out.println("Pagamento efetuado com sucesso!");
-            esperar(3);
+            System.out.println("Boleto no valor de R$"+valorPago+" pago com sucesso!");
+            esperar(5);
         }
     }
+
+
+    public static void imprimir2Via(){
+        Scanner scan = new Scanner(System.in);
+
+        System.out.print("Digite o código: ");
+        String codigo = scan.nextLine();
+        System.out.print("Digite o valor da fatura: ");
+        String valorFatura = scan.nextLine();
+        System.out.print("Digite a identificação da empresa: ");
+        String identEmpresa = scan.nextLine();
+        System.out.print("Digite a unidade consumidora: ");
+        String uniConsumidora = scan.nextLine();
+        System.out.print("Digite o ano-mês (AAAAMM): ");
+        String data = scan.nextLine();
+        System.out.print("Digite o sequencial ");
+        String sequencial = scan.nextLine();
+
+        
+
+    }
+
 }

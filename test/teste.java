@@ -16,7 +16,7 @@ public class teste {
 
             switch (opcao) {
                 case "1":
-                    menus.ReceberDigitos();
+                    menus.pagamentoCodigoBarras();
                     break;
 
                 case "2":

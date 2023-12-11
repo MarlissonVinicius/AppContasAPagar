@@ -17,11 +17,11 @@ public class Index {
 
             switch (opcao) {
                 case "1":
-                    menus.ReceberDigitos();
+                    menus.pagamentoCodigoBarras();
                     break;
 
                 case "2":
-                    System.out.println("Opção 2");
+                    menus.imprimir2Via();;
                     break;
 
                 case "3":
