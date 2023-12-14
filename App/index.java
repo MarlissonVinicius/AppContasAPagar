@@ -10,7 +10,6 @@ public class Index {
         Scanner scan = new Scanner(System.in);
         
         do {
-            
 
             menus.inicial();
             opcao = scan.nextLine();
@@ -21,7 +20,7 @@ public class Index {
                     break;
 
                 case "2":
-                    menus.imprimir2Via();;
+                    menus.imprimir2Via();         
                     break;
 
                 case "3":

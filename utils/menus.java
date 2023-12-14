@@ -4,16 +4,23 @@ import java.util.Scanner;
 import utils.verificarDigitoDAC;
 import java.io.IOException; 
 import java.lang.Thread;    
+import utils.GerarBoleto;
 
 
 public class menus {
 
-    private static void esperar(int tempo){
+    public static void esperar(int tempo){
         try {
-            Thread.sleep(tempo*1000); // Pausa por 3 segundo
+            Thread.sleep(tempo*1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         } 
+    }
+
+    private static void esperarConfirmacao(){
+        Scanner scan = new Scanner(System.in);
+        System.out.print("\nENTER para retornar para o menu principal: ");
+        scan.nextLine();
     }
 
     private static void exibirBarras(){
@@ -22,6 +29,14 @@ public class menus {
             saida += "-";
         }
         System.out.println(saida);
+    }
+
+    private static String tratarValor(String entrada){
+
+        entrada= entrada.replace(",", "");
+        entrada= entrada.replace(".", "");
+
+        return entrada;
     }
 
     private static void limparTerminal() {
@@ -71,6 +86,9 @@ public class menus {
         double valorPago = 0;
         String boxe1E2 = "";
         limparTerminal();
+
+        exibirBarras();
+        System.out.println("PAGAMENTO DE BOLETO");
         exibirBarras();
 
         for (int i = 1; i <= 4; i++) {  //receber os 4 dígitos boxe
@@ -107,13 +125,14 @@ public class menus {
         }
         if(dacCorreto == 4){
             System.out.println("Boleto no valor de R$"+valorPago+" pago com sucesso!");
-            esperar(5);
+            esperarConfirmacao();
         }
     }
 
-
     public static void imprimir2Via(){
         Scanner scan = new Scanner(System.in);
+
+        limparTerminal();
 
         System.out.print("Digite o código: ");
         String codigo = scan.nextLine();
@@ -125,10 +144,13 @@ public class menus {
         String uniConsumidora = scan.nextLine();
         System.out.print("Digite o ano-mês (AAAAMM): ");
         String data = scan.nextLine();
-        System.out.print("Digite o sequencial ");
+        System.out.print("Digite o sequencial: ");
         String sequencial = scan.nextLine();
-
         
+        valorFatura = tratarValor(valorFatura);
+        String boletoGerado = GerarBoleto.main(codigo, valorFatura, identEmpresa, uniConsumidora, data, sequencial);
+
+        System.out.println("\nBOLETO: "+boletoGerado);
 
     }
 
