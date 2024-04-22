@@ -102,7 +102,6 @@ public class menus {
                 if(i == 1 | i == 2){
                     boxe1E2 += digitos;
                 }else if(i ==3){
-                   
                     valorPago = retirarValor(boxe1E2);
                 }
             }else{
@@ -151,6 +150,7 @@ public class menus {
         String boletoGerado = GerarBoleto.main(codigo, valorFatura, identEmpresa, uniConsumidora, data, sequencial);
 
         System.out.println("\nBOLETO: "+boletoGerado);
+        esperarConfirmacao();
 
     }
 

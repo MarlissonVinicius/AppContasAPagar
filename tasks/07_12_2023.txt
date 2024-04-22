@@ -1,7 +1,0 @@
-Criar o menu principal:
-    disponibilizar 3 opções (“Pagamento c/Código de Barras”,“Imprimir 2a Via de Boleto”,"Sair")
-    sair apenas ao selecionar a opção 3 
-    caso selecione as outras opções, deverá ir para outra "janela"
-    caso selecione uma opção inválida, mostrar mensagem de erro e o menu inicial novamente 
-
-Desenvolver a lógica para receber os 4 Boxes caso a opção 2 seja escolhida:

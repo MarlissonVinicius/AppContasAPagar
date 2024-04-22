@@ -7,8 +7,9 @@ public class CalcularDigitoDAC {
 
     public static int main(String codigo){
         int acum = 0;
+        int ultimoDigito = (codigo.length() == 12) ? 1 : 0; //caso seja o pagamento, não irá pegar o ultimo digito, pois será o verificador
 
-        for (int i = 0; i < codigo.length(); i++) {
+        for (int i = 0; i < codigo.length() -ultimoDigito; i++) {
 
             int mutiplicador = (i%2 == 0) ? 2:1; 
             int num = Character.getNumericValue(codigo.charAt(i));

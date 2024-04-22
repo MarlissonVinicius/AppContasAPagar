@@ -34,7 +34,7 @@ public class GerarBoleto {
     public static String main(String codigo, String valorFatura, String identEmpresa, String uniConsumidora, String data, String sequencial) {
         
         
-        String boletoImcompleto = (codigo+
+        String boletoIncompleto = (codigo+
                                     preencherComZeros(valorFatura, 11)+
                                     preencherComZeros(identEmpresa, 7)+
                                     preencherComZeros(uniConsumidora, 7)+
@@ -42,13 +42,12 @@ public class GerarBoleto {
                                     "9"+ //digito separador
                                     preencherComZeros(sequencial, 7)+
                                     "9"); //digito separador
-
        
-        String digito = CalcularDigitoDAC.geral(boletoImcompleto);
+        String digito = CalcularDigitoDAC.geral(boletoIncompleto);
         
-        boletoImcompleto = (boletoImcompleto.substring(0,3)+digito+boletoImcompleto.substring(3));
+        boletoIncompleto = (boletoIncompleto.substring(0,3)+digito+boletoIncompleto.substring(3));
 
-        return formatarBoleto(boletoImcompleto);                           
+        return formatarBoleto(boletoIncompleto);                           
     }
     
 }
